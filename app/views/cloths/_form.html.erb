@@ -1,0 +1,61 @@
+
+
+<%= form_for @cloth, :html => {:class =>"form", :multipart => true } do |f| %>
+  <% if @cloth.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cloth.errors.count, "error") %> prohibited this cloth from being saved:</h2>
+
+      <ul>
+      <% @cloth.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= f.label :item_name %><br>
+    <%= f.text_field :item_name, :class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price %><br>
+    <%= f.text_field :price, :class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar, :class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :category %><br>
+    <%= f.select(:category, Cloth::CATEGORY) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :available_size %><br>
+    <%= f.text_field :available_size, :class=>"form-control" %>
+  </div>
+ 
+
+  <div class="form-group">
+    <%= f.label :available_color %><br>
+    <%= f.text_field :available_color, :class=>"form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :brand %><br>
+    <%= f.text_field :brand, :class=>"form-control" %>
+  </div>
+
+
+
+
+ 
+  <div class="actions">
+    <%= f.submit :class=>"btn btn-default" %>
+  </div>
+<% end %>
+

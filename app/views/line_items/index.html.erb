@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Order Items</h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Cloth</th>
+        <th>Quantity</th>
+        <th>Avatar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @line_items.each do |line_item| %>
+        <tr>
+          <td><%= line_item.cloth.item_code %></td>
+          <td><%= line_item.cloth.item_name %></td>
+          <td><%= line_item.quantity %></td>
+          <td><%= image_tag line_item.cloth.avatar, :style => "height:150px;" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+</div>

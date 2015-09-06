@@ -1,0 +1,45 @@
+
+<div class="container">
+<h3>Cloths DB
+<%= link_to 'New Cloth', new_cloth_path, :class=>"btn btn-default" %>
+<%= link_to 'New Orders', orders_path, :class=>"btn btn-default" %>
+</h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ItemCode</th>
+      <th>ItemName</th>
+      <th>Category</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Brand</th>
+      <th>ItemPrice</th>
+      <th>ItemAvatar</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cloths.each do |cloth| %>
+      <tr>
+        <td><%= cloth.item_code %></td>
+        <td><%= cloth.item_name %></td>
+        <th><%= cloth.category %></th>
+        <th><%= cloth.available_size %></th>
+        <th><%= cloth.available_color %></th>
+        <th><%= cloth.brand %></th>
+        <td><%= cloth.price %></td>
+        <td><%= image_tag cloth.avatar.url(:thumb) %></td>
+        <td><%= link_to 'Show', cloth %></td>
+        <td><%= link_to 'Edit', edit_cloth_path(cloth) %></td>
+        <td><%= link_to 'Destroy', cloth, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+</div>

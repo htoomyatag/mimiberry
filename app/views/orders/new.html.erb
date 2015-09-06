@@ -1,0 +1,74 @@
+<div class="container">
+<h3>Thanks you for shopping at MiMiberry.co :D</h3>
+
+
+<div class="container">
+
+  <div class="panel panel-default" id="order_form">
+
+      <div class="panel-heading" >Please fill up the form to complete your order.</div>
+      <div class="panel-body" >
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                
+                  <%= form_for @order, :html => {:class =>"form-horizontal", :remote => true} do |f| %>
+
+                        <div class="form-group">
+                          <%= f.text_field :cart_id , :class=>"form-control", :placeholder => "cart" , :value => session[:cart_id], :style => "display:none;" %>
+                        </div>
+
+
+                        <div class="form-group">
+                          <label>Your Name</label><br>
+                          <%= f.text_field :customer_name , :class=>"form-control", :placeholder => "FullName" %>
+                        </div>
+                        <div class="form-group">
+                          <label>NRC</label><br>
+                          <%= f.text_field :nrc, :class=>"form-control" %>
+                        </div>
+                        <div class="form-group">
+                          <label>Phone <span style="color:red;">(order will confirm via phone within 24 hours)</span></label><br>
+                          <%= f.text_field :contact_phone, :class=>"form-control" %>
+                        </div>
+                        <div class="form-group">
+                           <label>Shipping Address</label><br>
+                          <%= f.text_area :shipping_address, :class=>"form-control", :rows => 5 %>
+                        </div>
+                        <div class="actions">
+                          <%= f.submit "Submit", :class=>"btn btn-success", :id => "hidethisorder" %>
+                        </div>
+                <% end %>
+
+              </div>
+              <div class="col-md-4">
+
+              </div>
+      </div>
+  </div>
+
+
+<div class="panel panel-default" id="confirm_message" style="display:none;">
+  <div class="panel-body">
+     Horayyyyyyys! We have successfully received your order.We will contact you within 24 hours.
+
+     <a href="<%= request.env['HTTP_REFERER'] %>" style="color:#1DBAA5;">Back to home page</a>
+  </div>
+</div>
+
+</div>
+
+
+
+
+</div>
+
+<script>
+
+
+
+ $("#hidethisorder").click(function(){
+     $("#order_form").hide();
+     $("#confirm_message").show(10000);
+  
+        });
+</script>

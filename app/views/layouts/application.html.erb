@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MiMiBerry ClothsShop</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+
+
+	<!--header-->
+	<div class="header">
+		<div class="top-header">
+			<div class="container">
+				<div class="top-header-left">
+					<ul class="support">
+						<li><a href="#"><label> </label></a></li>
+						<li><a href="#">Welcome<span class="live"> from MIMIBerry</span></a></li>
+					</ul>
+					<ul class="support">
+						<li class="van"><a href="#"><label> </label></a></li>
+						<li><a href="#">Free shipping <span class="live">for Yangon Area</span></a></li>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="top-header-right">
+					<div class="down-top">		
+					  <% if user_signed_in? %>
+						  <%= link_to "Logout", destroy_user_session_path, method: :delete, :id => "mylogout"  %>
+				      <% end %>
+					 </div>
+					
+					<div class="clearfix"> </div>	
+				</div>
+				<div class="clearfix"> </div>		
+			</div>
+		</div>
+		<div class="bottom-header">
+			<div class="container">
+				<div class="header-bottom-left">
+					<div class="logo">
+						<a href="/"> <%= image_tag "logo.png" %></a>
+					</div>
+					
+					<div class="clearfix"> </div>
+				</div>
+				<div class="header-bottom-right">
+
+					<div class="cart" id="cart" >
+						<a href="#shoppingcart" data-toggle="modal">
+						<span></span>CART
+						</a><br/>Qty( <%= @cart.total_quantity %> ) | 
+						<br/>Cash <%= (@cart.total_price) %> Ks
+
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				
+				<div class="clearfix"> </div>	
+			</div>
+		</div>
+	
+	</div>
+
+<!-- for mobile cart -->
+<div id="title_message" >
+
+	<a href="#shoppingcart" data-toggle="modal">
+			<h3 id="cart_txt">CART - 
+			Qty( <%= @cart.total_quantity %> ) | 
+			Cash <%= (@cart.total_price) %> Ks</h3>
+	</a>
+
+
+</div>
+
+<body>
+
+<%= yield %>
+
+	<!---->
+	<div class="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="latter">
+				
+					<div class="clearfix"> </div>
+				</div>
+				<div class="latter-right">
+					<p>FOLLOW US</p>
+					<ul class="face-in-to">
+						<li><a href="#"><span> </span></a></li>
+						<li><a href="https://www.facebook.com/mimiberryco"><span class="facebook-in"> </span></a></li>
+						<div class="clearfix"> </div>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64494741-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

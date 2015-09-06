@@ -1,0 +1,39 @@
+
+
+
+ <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title">Shopping Cart</h4>
+           </div>
+           <div class="modal-body">
+            	<table class="table table-striped">
+		              <thead>
+		                <tr>
+		                  <th>Name</th>
+		                  <th>Quantity</th>
+		                  <th>Price</th>
+		                  <th></th>
+		                </tr>
+		              </thead>
+		              <tbody>
+		              	<%= render(cart.line_items) %>
+		                <tr>
+		                  <th></th>
+		                  <th>Total</th>
+		                  <th><%= (cart.total_price) %> Ks</th>
+		                  <th>&nbsp;</th>
+		                </tr>
+		              </tbody>
+            	</table>
+           </div>
+           <div class="modal-footer">
+
+     		 <%= link_to 'Empty cart', cart, :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-danger", :style => "float:left;width:27%;padding-left:0px;padding-right:0px;"%>
+
+             <button type="button" class="btn btn-default" data-dismiss="modal" style="width:30%;float:left;padding-left:0px;padding-right:0px;">Continue</button>
+
+        	 <%= link_to "Checkout", new_order_path, :class => "btn btn-info", :style => "float:right;width:30%;padding-left:0px;padding-right:0px;"   %>
+
+           </div>
+         </div><!-- /.modal-content -->

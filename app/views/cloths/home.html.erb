@@ -1,0 +1,116 @@
+
+	<!---->
+	<!-- start content -->
+	<div class="container">
+		
+	<div class="women-product">
+		<div class=" w_content">
+			<div class="women">
+				<a href="#"><h4>Sales Item - <span><%= @number_of_cloths %> items</span> </h4></a>
+				<ul class="w_nav">
+					<li>Sort : </li>
+			     	<li><a class="active" href="#">popular</a></li> |
+			     	<li><a href="#">new </a></li> |
+			     	<li><a href="#">discount</a></li> |
+			     	<li><a href="#">price: Low High </a></li> 
+			     <div class="clearfix"> </div>	
+			     </ul>
+			     <div class="clearfix"> </div>	
+			</div>
+		</div>
+		<!-- grids_of_4 -->
+		<div class="grid-product">
+
+		<% @cloths.each do |cloth| %>
+			<div class=" product-grid" id="mygrid"><br/>
+			<div id="mycode">code - <%= cloth.item_code %></div>
+			<div class="content_box"><a href="#">
+			   	<div class="left-grid-view grid-view-left">
+			   	   	  <%= image_tag cloth.avatar.url(:medium), :class =>"img-responsive watch-right", :style =>"width:320px;" %>
+				   	   	<div class="mask">
+	                        <div class="info">Quick View</div>
+			            </div>
+				   	  </a>
+				   </div>
+				    <h4><a href="#"><%= cloth.item_name %> </a></h4>
+				     <p>Available size (<%= cloth.available_size %>)<br/>
+				        Available color (<%= cloth.available_color %>)</p>
+
+				      <div>
+				        <h4 style="float:left;">Price: <%= cloth.price %> Kyats<hr/>
+				        <p>1 TEE 10000 Kyats<br/>
+				           2 TEE 15000 Kyats<br/>
+				           3 TEE 20000 Kyats</p>
+				        <%= button_to 'Add to Cart' , line_items_path(:cloth_id => cloth),:class =>"btn btn-success btn-sm" %>
+				        </h4><br/>
+				       
+				      </div>
+			 </div>
+             </div>
+
+        <% end %>
+			
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<div class="sub-cate">
+				<div class=" top-nav rsidebar span_1_of_left">
+					<h3 class="cate">CATEGORIES</h3>
+				  <ul class="menu">
+		<li class="item1">
+			<%= link_to "Games",cloth_by_category_path(:category => "Games"), :method => :get %>
+		</li>
+		<li class="item2">
+			<%= link_to "Memes",cloth_by_category_path(:category => "Memes"), :method => :get %>
+		</li>
+		<li class="item3">
+			<%= link_to "Heros",cloth_by_category_path(:category => "Heros"), :method => :get %>
+		</li>	
+		<li class="item3">
+			<%= link_to "Techs",cloth_by_category_path(:category => "Techs"), :method => :get %>
+		</li>
+		<li class="item3">
+			<%= link_to "Animes",cloth_by_category_path(:category => "Animes"), :method => :get %>
+		</li>
+		
+				
+		
+	</ul>
+		</li>
+				
+		
+	</ul>
+					</div>
+				<!--initiate accordion-->
+		<script type="text/javascript">
+			$(function() {
+			    var menu_ul = $('.menu > li > ul'),
+			           menu_a  = $('.menu > li > a');
+			    menu_ul.hide();
+			    menu_a.click(function(e) {
+			        e.preventDefault();
+			        if(!$(this).hasClass('active')) {
+			            menu_a.removeClass('active');
+			            menu_ul.filter(':visible').slideUp('normal');
+			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+			        } else {
+			            $(this).removeClass('active');
+			            $(this).next().stop(true,true).slideUp('normal');
+			        }
+			    });
+			
+			});
+		</script>
+	     	 	
+			</div>
+					<div class="fb-like-box" data-href="https://www.facebook.com/mimiberryco" data-width="300px" data-height="271px" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+	<div class="clearfix"> </div>
+</div>
+
+
+<!--shopping cart model  -->
+ <div class="modal fade" id="shoppingcart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+            <%= render @cart %>
+       </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->

@@ -1,0 +1,44 @@
+<div class="container">
+
+		<h3>Cloth Information</h3>
+
+		<p>
+		  <strong>Item code:</strong>
+		  <%= @cloth.item_code %>
+		</p>
+
+		<p>
+		  <strong>Item name:</strong>
+		  <%= @cloth.item_name %>
+		</p>
+
+
+        <p>
+ 			<strong>Item category:</strong>
+            <%= @cloth.category %>
+        </p>
+        <p>
+        	<strong>Available Size:</strong>
+        	<%= @cloth.available_size %>
+        </p>
+        <p>
+       	<strong>Available Color:</strong>
+        <%= @cloth.available_color %></p>
+
+        <p>
+       	<strong>Brand:</strong>
+        <%= @cloth.brand %></p>
+
+
+		<p>
+		  <strong>Price:</strong>
+		  <%= @cloth.price %>
+		</p>
+
+		<p>
+		   <%= image_tag @cloth.avatar.url(:medium) %>
+		</p>
+
+<%= link_to 'Edit', edit_cloth_path(@cloth) %> |
+<%= link_to 'Back', cloths_path %>
+</div>

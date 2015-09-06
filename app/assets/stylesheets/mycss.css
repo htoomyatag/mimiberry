@@ -1,0 +1,26 @@
+#mylogout{
+	color: white;
+}
+
+#cart{
+	float:right;
+}
+
+
+#mylogintextbox{
+
+	height: 50px;
+}
+
+
+#mycode{
+	background:#F97E76;
+	color: white;
+	font-size: 12px;
+	padding: 10px;
+}
+
+
+#mygrid{
+	padding: 10px;
+}

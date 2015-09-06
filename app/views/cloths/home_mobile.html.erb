@@ -1,0 +1,117 @@
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+	<!---->
+	<!-- start content -->
+	<div class="container">
+	<ul class="list-group">
+
+	  <li class="list-group-item" id="mobile_header"><h4><label id="mo_doll"></label>Welcome from MIMIberry</h4></li>
+	  <li class="list-group-item" id="mobile_header"><h4><label id="mo_van"></label>Free shipping <span class="live">for Yangon Area</span></h4></li>
+	  <li class="list-group-item" id="mobile_header">
+			<a href="#shoppingcart" data-toggle="modal" style="color:#ffffff;">
+			<h4><label id="mo_cart"></label>CART<br/>
+			</a>Qty( <%= @cart.total_quantity %> ) | 
+			Cash <%= (@cart.total_price) %> Ks</h4>
+
+	  </li>
+	</ul>
+		
+	<div class="women-product">
+		<div class=" w_content">
+			<div class="women">
+				<a href="#"><h4>Sales Item - <span><%= @number_of_cloths %> items</span> </h4></a>
+				<ul class="w_nav">
+					<li>Sort : </li>
+			     	<li><a class="active" href="#">popular</a></li> |
+			     	<li><a href="#">new </a></li> |
+			     	<li><a href="#">discount</a></li> |
+			     	<li><a href="#">price: Low High </a></li> 
+			     <div class="clearfix"> </div>	
+			     </ul>
+			     <div class="clearfix"> </div>	
+			</div>
+		</div>
+		<!-- grids_of_4 -->
+		<div class="grid-product">
+
+		<% @cloths.each do |cloth| %>
+			<div class=" product-grid" id="mygrid"><br/>
+			<div id="mycode">code - <%= cloth.item_code %></div>
+			<div class="content_box"><a href="#">
+			   	<div class="left-grid-view grid-view-left">
+			   	   	  <%= image_tag cloth.avatar.url(:medium), :class =>"img-responsive watch-right", :style =>"width:320px;" %>
+				   	   	<div class="mask">
+	                        <div class="info">Quick View</div>
+			            </div>
+				   	  </a>
+				   </div>
+				    <h4><a href="#"><%= cloth.item_name %> </a></h4>
+				     <p>Available size (<%= cloth.available_size %>)<br/>
+				        Available color (<%= cloth.available_color %>)</p>
+				      
+				      <div>
+				        <h4 style="float:left;">Price: <%= cloth.price %> Kyats<hr/>
+				        <%= button_to 'Add to Cart' , line_items_path(:cloth_id => cloth),:class =>"btn btn-success btn-sm" %>
+				        </h4>
+				      </div>
+			 </div>
+             </div>
+
+        <% end %>
+			
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+				
+		<div class=" chain-grid menu-chain">
+	   		<a href="#">
+	   		<h3 style="text-align:center;">MiMiBerry Online Store is Ecommerce product of</h3>  	
+	   		<%= image_tag "hnt.png", :class =>"img-responsive chain" %></a>	
+	   		<p style="text-align:center;">Produced an App for Others is worth Living.</p>  		     	</div>
+	   		    <a class="view-all all-product" href="#">Facebook<span> </span></a> 
+	   		</div><br/>
+			<div class="fb-like-box" data-href="https://www.facebook.com/mimiberryco" data-width="100px" data-height="100px" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true">
+			</div>
+	<div class="clearfix"> </div>
+</div>
+
+
+<!--shopping cart model  -->
+ <div class="modal fade" id="shoppingcart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+            <%= render @cart %>
+       </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
+
+
+ <div class="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="latter">
+				
+					<div class="clearfix"> </div>
+				</div>
+				<div class="latter-right">
+					<p>FOLLOW US</p>
+					<ul class="face-in-to">
+						<li><a href="#"><span> </span></a></li>
+						<li><a href="https://www.facebook.com/mimiberryco"><span class="facebook-in"> </span></a></li>
+						<div class="clearfix"> </div>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="footer-bottom-cate cate-bottom">
+					<ul>
+						<li class="temp"> <p class="footer-class">Produced by <a href="http://www.hnttechs.com/" target="_blank">H&Ttechs</a> </p></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+

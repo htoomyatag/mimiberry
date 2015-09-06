@@ -1,0 +1,27 @@
+
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer name:</strong>
+  <%= @order.customer_name %>
+</p>
+
+<p>
+  <strong>Nrc:</strong>
+  <%= @order.nrc %>
+</p>
+
+<p>
+  <strong>Contact phone:</strong>
+  <%= @order.contact_phone %>
+</p>
+
+<p>
+  <strong>Shipping address:</strong>
+  <%= @order.shipping_address %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+</div>

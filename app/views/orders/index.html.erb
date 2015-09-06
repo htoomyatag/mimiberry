@@ -1,0 +1,44 @@
+
+
+
+
+<div class="container">
+<h3>Orders DB <%= link_to 'New Cloth', new_cloth_path, :class=>"btn btn-default" %>
+<%= link_to 'New Orders', orders_path, :class=>"btn btn-default" %>
+</h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>CustomerName</th>
+      <th>Nrc</th>
+      <th>Contact phone</th>
+      <th>Shipping address</th>
+      <th>Order Item</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.status %></td>
+        <td><%= order.customer_name %></td>
+        <td><%= order.nrc %></td>
+        <td><%= order.contact_phone %></td>
+        <td><%= order.shipping_address %></td>
+        <td><%= link_to "OrderItems",line_items_path(:cart_id => order.cart_id), :method => :get %>
+        </td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+</div>
